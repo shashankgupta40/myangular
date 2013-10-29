@@ -1,0 +1,50 @@
+ <div class="container">
+<div class="page-header">
+	<h1>Edit Cat</h1>
+</div>
+<alert level="{{message.level}}" text="{{message.text}}"/>
+<form name="form" data-ng-submit="update(item)" class="form-horizontal">
+	<input type="hidden" data-ng-model="item.id">
+	<input type="hidden" data-ng-model="item.version">
+
+	<div class="control-group" data-ng-class="{error: errors.name}">
+		<label class="control-label" for="name">Name</label>
+		<div class="controls">
+			<input type="text" id="name" name="name" required data-ng-model="item.name">
+			<span class="help-inline" data-ng-show="errors.name">{{errors.name}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.breed}">
+		<label class="control-label" for="breed">Breed</label>
+		<div class="controls">
+			<input type="text" id="breed" name="breed" required data-ng-model="item.breed">
+			<span class="help-inline" data-ng-show="errors.breed">{{errors.breed}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.coat}">
+		<label class="control-label" for="coat">Coat</label>
+		<div class="controls">
+			<!--<input type="text" id="coat" name="coat" required data-ng-model="item.coat">-->
+            <select name="coat" id="coat" ng-model="item.coat.type" ng-options="option.value as option.name for option in coats" required></select><br>
+			<span class="help-inline" data-ng-show="errors.coat">{{errors.coat}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.dateOfArrival}">
+		<label class="control-label" for="dateOfArrival">Date Of Arrival</label>
+		<div class="controls">
+			<!--<input type="text" id="dateOfArrival" name="dateOfArrival" data-ng-model="item.dateOfArrival" required >-->
+            <input type="text" id="dateOfArrival" name="dateOfArrival" ng-model="item.dateOfArrival.date" data-date-format="dd/mm/yyyy" required bs-datepicker>
+            <button type="button" class="btn" data-toggle="datepicker"><i class="icon-calendar"></i></button>
+			<span class="help-inline" data-ng-show="errors.dateOfArrival">{{errors.dateOfArrival}}</span>
+		</div>
+	</div>
+	
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid"><i class="icon-ok"></i> Update</button>
+		<button type="button" class="btn btn-danger" data-ng-click="delete(item)"><i class="icon-trash"></i> Delete</button>
+	</div>
+</form>
+ </div>

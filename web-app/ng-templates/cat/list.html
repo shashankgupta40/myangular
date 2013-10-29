@@ -1,0 +1,41 @@
+<div class="container">
+<div class="page-header">
+    <h1>Cat List</h1>
+</div>
+<alert level="{{message.level}}" text="{{message.text}}"/>
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+
+        <th>Name</th>
+
+        <th>Breed</th>
+
+        <th>Coat</th>
+
+        <th>Date Of Arrival</th>
+
+        <th>Action</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr data-ng-repeat="item in list">
+
+        <td class="catNameHover" data-ng-click="show(item)">{{item.name}}</td>
+
+        <td>{{item.breed}}</td>
+
+        <td>{{item.coat}}</td>
+
+        <td>{{item.dateOfArrival | date:'MMM/dd/yyyy'}}</td>
+
+        <td class="alignCenter">
+                <a class="btn" data-ng-click="edit(item)"><i class="icon-edit"></i> Edit</a>
+                <button confirmed-click="delete(item)"  ng-delete-warn class="btn btn-danger" type="button"><i class="icon-trash"></i> Delete</button>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+<div class="pagination pagination-centered" data-pagination data-total="total"></div></div>
